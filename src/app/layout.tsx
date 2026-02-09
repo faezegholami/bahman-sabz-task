@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "../auth/auth-provider";
+import DashboardWrapper from "../layout/dashboard-wrapper";
 
 export const metadata: Metadata = {
   title: "تسک بهمن سبز",
@@ -12,8 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa">
-      <body>{children}</body>
+    <html lang="fa" dir="rtl">
+      <body>
+        <AuthProvider>
+          <DashboardWrapper>{children}</DashboardWrapper>
+        </AuthProvider>
+      </body>
     </html>
   );
 }
